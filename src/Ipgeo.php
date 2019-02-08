@@ -18,6 +18,10 @@ class Ipgeo
         $this->service = $service;
     }
 
+    /**
+     * @param $ip
+     * @return string
+     */
     public function getLocation($ip)
     {
         return $this->service->getLocation($ip);

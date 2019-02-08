@@ -26,14 +26,13 @@ class Ipapi implements ServiceInterface
 
     /**
      * @param $ip
-     * @return mixed|\Psr\Http\Message\ResponseInterface|string
+     * @return string
      */
     public function getLocation($ip)
     {
         try {
-            $response = $this->client->request('GET', $ip)->getBody();
+            $response = (string)$this->client->request('GET', $ip)->getBody();
         } catch (GuzzleException $e) {
-            echo "error {$e->getMessage()}\n";
             $response = '';
         }
         return $response;
