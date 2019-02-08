@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "guzzlehttp/guzzle": "~6.0",
         "nategood/commando": "0.3.*",
         "php": ">=7.2"
     },
@@ -23,6 +24,7 @@
     },
     "bin": ["bin/ipgeo"],
     "scripts": {
-        "beauty": "vendor/bin/phpcbf"
+        "beauty": "vendor/bin/phpcbf --standard=PSR2 src bin tests",
+        "sniff": "vendor/bin/phpcs --standard=PSR2 src bin tests"
     }
 }
