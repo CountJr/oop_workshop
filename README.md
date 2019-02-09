@@ -36,8 +36,7 @@ Library usage
 Build convert function:
 
 ```
-$client = new \Countjr\Ipgeo\Services\Ipapi();
-$ipgeo = new \Countjr\Ipgep\Ipgeo($client);
+$ipgeo = new \Countjr\Ipgep\Ipgeo();
 $result = $ipgeo->getLocation('IpAddress');
 ```
 

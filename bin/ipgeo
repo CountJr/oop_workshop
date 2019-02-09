@@ -23,8 +23,7 @@ $ipgeoCmd->option('i')
     });
 
 if ($ipgeoCmd) {
-    $client = new Ipapi();
-    $ipgeo = new Ipgeo($client);
+    $ipgeo = new Ipgeo();
     try {
         $result = $ipgeo->getLocation($ipgeoCmd['ip']);
         print_r($result);

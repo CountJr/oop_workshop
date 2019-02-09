@@ -4,7 +4,7 @@ namespace Countjr\Ipgeo;
 
 use Countjr\Ipgeo\Exceptions\BadArgumentException;
 use Countjr\Ipgeo\Exceptions\GetException;
-use Countjr\Ipgeo\Services\ServiceInterface;
+use Countjr\Ipgeo\Services\Ipapi;
 
 class Ipgeo
 {
@@ -12,11 +12,10 @@ class Ipgeo
 
     /**
      * Ipgeo constructor.
-     * @param ServiceInterface $service
      */
-    public function __construct(ServiceInterface $service)
+    public function __construct()
     {
-        $this->service = $service;
+        $this->service = new Ipapi();
     }
 
     /**
