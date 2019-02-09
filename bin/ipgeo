@@ -4,7 +4,12 @@
 namespace Countjr\Ipgeo;
 
 use Commando\Command;
+use Countjr\Ipgeo\Exceptions\BadArgumentException;
+use Countjr\Ipgeo\Exceptions\GetException;
 use Countjr\Ipgeo\Services\Ipapi;
+
+const EXIT_ERROR_CODE = 1;
+const EXIT_SUCCESS_CODE = 0;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -13,12 +18,22 @@ $ipgeoCmd->option('i')
     ->aka('ip')
     ->require()
     ->describedAs('IP address')
-    ->must(function($ip) {
+    ->must(function ($ip) {
         return filter_var($ip, FILTER_VALIDATE_IP);
     });
 
 if ($ipgeoCmd) {
     $client = new Ipapi();
     $ipgeo = new Ipgeo($client);
-    echo $ipgeo->getLocation($ipgeoCmd['ip']);
+    try {
+        $result = $ipgeo->getLocation($ipgeoCmd['ip']);
+        print_r($result);
+    } catch (BadArgumentException $e) {
+        //
+        exit(EXIT_ERROR_CODE);
+    } catch (GetException $e) {
+        //
+        exit(EXIT_ERROR_CODE);
+    }
 }
+exit(EXIT_SUCCESS_CODE);
