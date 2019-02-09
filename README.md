@@ -36,9 +36,14 @@ Library usage
 Build convert function:
 
 ```
-$ipgeo = new \Countjr\Ipgep\Ipgeo();
+$ipgeo = new \Countjr\Ipgep\Ipgeo($service);
 $result = $ipgeo->getLocation('IpAddress');
 ```
+Using Ap-Api as a default service.
+
+Result:
+
+result is a stdObject with response as described in service documentation.
 
 Requirements
 ------------
