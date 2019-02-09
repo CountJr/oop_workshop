@@ -1,10 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace Countjr\Ipgeo;
 
 use Countjr\Ipgeo\Exceptions\BadArgumentException;
 use Countjr\Ipgeo\Exceptions\GetException;
 use Countjr\Ipgeo\Services\Ipapi;
+use Countjr\Ipgeo\Services\ServiceInterface;
 
 class Ipgeo
 {
@@ -12,15 +14,16 @@ class Ipgeo
 
     /**
      * Ipgeo constructor.
+     * @param ServiceInterface $service
      */
-    public function __construct()
+    public function __construct(ServiceInterface $service = null)
     {
-        $this->service = new Ipapi();
+        $this->service = $service ?? new Ipapi();
     }
 
     /**
      * @param $ip
-     * @return string
+     * @return mixed
      * @throws BadArgumentException
      * @throws GetException
      */
@@ -29,6 +32,6 @@ class Ipgeo
         if (!filter_var($ip, FILTER_VALIDATE_IP)) {
             throw new BadArgumentException();
         }
-        return $this->service->getLocation($ip);
+        return json_decode($this->service->getLocation($ip));
     }
 }

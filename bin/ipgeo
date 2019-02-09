@@ -6,7 +6,6 @@ namespace Countjr\Ipgeo;
 use Commando\Command;
 use Countjr\Ipgeo\Exceptions\BadArgumentException;
 use Countjr\Ipgeo\Exceptions\GetException;
-use Countjr\Ipgeo\Services\Ipapi;
 
 const EXIT_ERROR_CODE = 1;
 const EXIT_SUCCESS_CODE = 0;
